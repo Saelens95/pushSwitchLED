@@ -1,0 +1,46 @@
+//Created by Ryan Saelens
+//A Push Switch connected to three LEDs that can easily be turned on and off. Also, faily fast.
+
+int switchPin = D6; //pushSwitch pin
+
+//Normal LEDs
+int ledPin1 = D1;
+int ledPin2 = D2;
+int ledPin3 = D3;
+
+boolean on = false;     
+
+int switchState = 0; 
+
+void setup() {
+  pinMode(switchPin, INPUT);   
+  
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(ledPin3, OUTPUT);
+     
+}
+
+void loop(){
+  switchState = digitalRead(switchPin);
+  if(switchState == LOW) {    
+    if(on == false){
+      on = true;
+      //All LEDs are off
+      digitalWrite(ledPin1, LOW);
+      digitalWrite(ledPin2, LOW);
+      digitalWrite(ledPin3, LOW);
+    
+    }  
+    
+    else {
+      on = false;
+      //All LEDs are on
+      digitalWrite(ledPin1, HIGH);
+      digitalWrite(ledPin2, HIGH);
+      digitalWrite(ledPin3, HIGH);
+      
+    }
+  }
+  
+}
